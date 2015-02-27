@@ -1,2 +1,3 @@
 (defpackage #:recursec-tests
-  (:use #:cl))
+  (:use #:cl)
+  (:export #:run-tests))
