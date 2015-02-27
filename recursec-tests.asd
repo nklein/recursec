@@ -6,4 +6,5 @@
   :depends-on (:recursec :nst)
   :components ((:module "tests"
                 :components ((:file "package")
+                             (:file "exports" :depends-on ("package"))
                              (:file "run" :depends-on ("package"))))))
