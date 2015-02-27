@@ -5,4 +5,4 @@
   :license "Free"
   :depends-on (:recursec :nst)
   :components ((:module "tests"
-                :components ())))
+                :components ((:file "package")))))
