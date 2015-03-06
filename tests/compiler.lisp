@@ -8,4 +8,9 @@
                                                 (:predicate fboundp))
     (recursec:compile-function "B"
                                ">"
-                               "B")))
+                               "B"))
+
+  (nst:def-test load-register (:equal 1)
+    (funcall (symbol-function (recursec:compile-function "Bv<"
+                                                         ">1#"
+                                                         "B^#")))))
