@@ -1,3 +1,4 @@
 (in-package #:recursec)
 
-(defun compile-function ())
+(defun compile-function (&rest lines)
+  (declare (ignore lines)))
