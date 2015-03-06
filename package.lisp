@@ -1,2 +1,3 @@
 (defpackage #:recursec
-  (:use #:cl))
+  (:use #:cl)
+  (:export #:compile-function))
