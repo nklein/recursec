@@ -14,6 +14,12 @@
                                ">"
                                "B"))
 
+  (nst:def-test call-simplest-function (:equal 0)
+    (compile-then-call 'b
+                       "B"
+                       ">"
+                       "B"))
+
   (nst:def-test load-register (:equal 1)
     (compile-then-call 'b
                        "Bv<"
