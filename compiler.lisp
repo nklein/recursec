@@ -1,4 +1,7 @@
 (in-package #:recursec)
 
 (defun compile-function (&rest lines)
-  (values (intern (subseq (first lines) 0 1))))
+  (let ((name (intern (subseq (first lines) 0 1))))
+    (setf (symbol-function name)
+          (lambda ()))
+    name))
