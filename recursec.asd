@@ -6,4 +6,5 @@
   :in-order-to ((asdf:test-op (asdf:load-op :recursec-tests)))
   :perform (asdf:test-op (o c) (uiop:symbol-call :recursec-tests :run-tests))
   :components ((:static-file "README.md")
-               (:file "package")))
+               (:file "package")
+               (:file "compiler" :depends-on ("package"))))
