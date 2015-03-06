@@ -8,7 +8,7 @@
   (let ((recursec::*register* 0))
     (funcall (symbol-function symbol))))
 
-(nst:def-test-group recursec-exports (recursec-tests-package)
+(nst:def-test-group recursec-compiler (recursec-tests-package)
   (nst:def-test compile-simplest-function (:all (:equal 'b)
                                                 (:predicate fboundp))
     (recursec:compile-function "B"
