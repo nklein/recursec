@@ -5,7 +5,8 @@
 
 (defun compile-then-call (symbol &rest lines)
   (apply #'recursec:compile-function lines)
-  (funcall (symbol-function symbol)))
+  (let ((recursec::*register* 0))
+    (funcall (symbol-function symbol))))
 
 (nst:def-test-group recursec-exports (recursec-tests-package)
   (nst:def-test compile-simplest-function (:all (:equal 'b)
@@ -23,5 +24,11 @@
   (nst:def-test load-register (:equal 1)
     (compile-then-call 'b
                        "Bv<"
-                       ">1#"
-                       "B#^")))
+                       ">1."
+                       "B.^"))
+
+  (nst:def-test load-register-easterly (:equal 1)
+    (compile-then-call 'b
+                       "Bv<"
+                       ">1."
+                       "B2^")))
