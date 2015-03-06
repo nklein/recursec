@@ -31,4 +31,10 @@
     (compile-then-call 'b
                        "Bv<"
                        ">1."
+                       "B2^"))
+
+  (nst:def-test unconditional-turn-south (:equal 2)
+    (compile-then-call 'b
+                       "Bv<"
+                       ">v1"
                        "B2^")))
