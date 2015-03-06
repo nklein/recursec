@@ -3,6 +3,10 @@
 (nst:def-fixtures recursec-tests-package ()
   (*package* #.*package*))
 
+(defun compile-then-call (symbol &rest lines)
+  (apply #'recursec:compile-function lines)
+  (funcall (symbol-function symbol)))
+
 (nst:def-test-group recursec-exports (recursec-tests-package)
   (nst:def-test compile-simplest-function (:all (:equal 'b)
                                                 (:predicate fboundp))
@@ -11,6 +15,7 @@
                                "B"))
 
   (nst:def-test load-register (:equal 1)
-    (funcall (symbol-function (recursec:compile-function "Bv<"
-                                                         ">1#"
-                                                         "B^#")))))
+    (compile-then-call 'b
+                       "Bv<"
+                       ">1#"
+                       "B#^")))
