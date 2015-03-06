@@ -3,5 +3,6 @@
 (defun compile-function (&rest lines)
   (let ((name (intern (subseq (first lines) 0 1))))
     (setf (symbol-function name)
-          (lambda ()))
+          (lambda ()
+            1))
     name))
