@@ -8,4 +8,5 @@
                 :components ((:file "package")
                              (:file "documentation" :depends-on ("package"))
                              (:file "exports" :depends-on ("package"))
+                             (:file "compiler" :depends-on ("package"))
                              (:file "run" :depends-on ("package"))))))
