@@ -1,8 +1,15 @@
 (in-package #:recursec-tests)
 
-(nst:def-fixtures recursec-package ()
-  (pkg (find-package '#:RECURSEC)))
+(defun exported-from-package-p (sym)
+  (multiple-value-bind (symbol status)
+      (find-symbol (symbol-name sym) "RECURSEC")
+    (and symbol
+         (eql status :external))))
 
-(nst:def-test-group recursec-exports (recursec-package)
-  (nst:def-test package-exists (:true)
-    pkg))
+(defun function-in-package-p (sym)
+  (fboundp (find-symbol (symbol-name sym) "RECURSEC")))
+
+(nst:def-test-group recursec-exports ()
+  (nst:def-test compiler-exists (:all (:predicate exported-from-package-p)
+                                      (:predicate function-in-package-p))
+    :compile-function))
